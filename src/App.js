@@ -5,31 +5,42 @@ import TimerForm from './timerForm';
 class App extends Component {
   state = {
     time: 0,
-    isDisplayed: false
+    name: null,
+    isDisplayed: false,
+    timerObj: [],
+    timerArr: []
   }
   
   setTimer = (e) => {
     this.setState({
-        time: e.target.value
+        time: e.target.value         
+    });    
+  }
+  setName = (e) => {
+    this.setState({
+      name:e.target.value
     });
-    
-}
-  
-  displayTimer = (e) => {
-    e.preventDefault();
-    this.setState({isDisplayed : true})
-  }   
+  }  
 
-  render()   {    
-  return (
+  addTimer = (e) => {
+    e.preventDefault();
+    this.setState({      
+      timerObj: this.state.timerObj.concat({time : this.state.time, name : this.state.name})      
+    });    
+  }
+  
+  render()   {
+
+      return (
     <div className="App">
       <h1>Timer</h1> 
-        <TimerForm displayTimer={this.displayTimer} setTimer={this.setTimer}/>        
-        {this.state.isDisplayed && <TimerApp time={this.state.time}/>}              
+        <TimerForm addTimer={this.addTimer} setTimer={this.setTimer} setName={this.setName} name={this.state.name}/>
+        {this.state.timerObj.map((id) => <TimerApp key={id} time={this.state.time} name={this.state.name} />  )}        
     </div>  
-  );
-}
+    );
+  }
 }
 
 export default App;
+
 

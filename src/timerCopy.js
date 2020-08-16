@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
+/*import React, {Component} from 'react';
 
 class TimerApp extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            time: props.time,
-            name: props.name
+            time: props.time
         };
         this.startTimer = this.startTimer.bind(this);
         this.stopTimer = this.stopTimer.bind(this);
@@ -44,23 +43,17 @@ class TimerApp extends React.Component {
     resetTimer() {
         this.setState({time: this.props.time})
     }
-    deletTimer = () => {
-        //this.props.                    <----------deleteTimer
-
-    }
 
     render () {
         return (
     <div>        
-        <h1>{this.state.name}  {this.minutes(this.state.time)}:{this.seconds(this.state.time)}</h1>
+        <h1>{this.minutes(this.state.time)}:{this.seconds(this.state.time)}</h1>
         <button onClick = {this.startTimer}>START</button>
         <button onClick = {this.stopTimer}>STOP</button>
-        <button onClick = {this.resetTimer}>RESET</button>
-        <button onClick= {this.deletTimer}>DELETE</button>        
+        <button onClick = {this.resetTimer}>RESET</button>        
     </div>
         );  
 }}
 export default TimerApp
-    
 
-
+*/

@@ -7,9 +7,10 @@ render () {
     return (
 <div>
 
-<form onSubmit={this.props.displayTimer}>
-    <input onChange={this.props.setTimer}/>
-    <button>SubmitForm</button>             
+<form onSubmit={this.props.addTimer}>
+    <input placeholder="Time" onChange={this.props.setTimer}/>
+    <input type="text" placeholder="Name" onChange={this.props.setName}/>
+    <button>Add {this.props.name}</button>             
 </form>  
 
 </div>
