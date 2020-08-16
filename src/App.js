@@ -7,8 +7,7 @@ class App extends Component {
     time: 0,
     name: null,
     isDisplayed: false,
-    timerObj: [],
-    timerArr: []
+    timerObj: [],    
   }
   
   setTimer = (e) => {
