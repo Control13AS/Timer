@@ -5,8 +5,10 @@ class TimerApp extends React.Component {
         super(props);
         this.state = {
             time: props.time,
-            name: props.name
+            name: props.name,
+            reset: props.time         
         };
+        
         this.startTimer = this.startTimer.bind(this);
         this.stopTimer = this.stopTimer.bind(this);
         this.resetTimer = this.resetTimer.bind(this);
@@ -41,8 +43,8 @@ class TimerApp extends React.Component {
     stopTimer() {
         clearInterval(this.myInterval);
     }
-    resetTimer() {
-        this.setState({time: this.props.time})
+    resetTimer() {        
+        this.setState({time: this.state.reset})
     }
     deletTimer = () => {
         //this.props.                    <----------deleteTimer

@@ -5,10 +5,8 @@ import TimerForm from './timerForm';
 class App extends Component {
   state = {
     time: 0,
-    name: null,
-    isDisplayed: false,
-    timerObj: [],
-    timerArr: []
+    name: null,    
+    timerObj: [],    
   }
   
   setTimer = (e) => {
@@ -26,7 +24,9 @@ class App extends Component {
     e.preventDefault();
     this.setState({      
       timerObj: this.state.timerObj.concat({time : this.state.time, name : this.state.name})      
-    });    
+    }); 
+    document.getElementById('setTimer').value = "";
+    document.getElementById('setName').value = "";
   }
   
   render()   {
