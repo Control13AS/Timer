@@ -22,7 +22,7 @@ class App extends Component {
 
   addTimer = (e) => {
     e.preventDefault();
-    this.setState({      
+    this.setState({       
       timerObj: this.state.timerObj.concat({time : this.state.time, name : this.state.name})      
     }); 
     document.getElementById('setTimer').value = "";
