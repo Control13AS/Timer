@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import TimerApp from './timer';
 import TimerForm from './timerForm';
+import { v4 as uuidv4 } from 'uuid';
 
 class App extends Component {
   state = {
     time: 0,
-    name: null,    
+    name: null,
+    id: uuidv4(),    
     timerObj: [],    
   }
   
@@ -23,19 +25,33 @@ class App extends Component {
   addTimer = (e) => {
     e.preventDefault();
     this.setState({       
-      timerObj: this.state.timerObj.concat({time : this.state.time, name : this.state.name})      
-    }); 
+      timerObj: this.state.timerObj.concat({
+        id: uuidv4(), 
+        time : this.state.time, 
+        name : this.state.name,
+      })            
+    });
+    console.log (this.state.timerObj)   
     document.getElementById('setTimer').value = "";
     document.getElementById('setName').value = "";
   }
-  
-  render()   {
 
+  renderTimers() {
+    return(
+      <ul>
+        {this.state.timerObj.map(timer => {
+          return <TimerApp key={timer.id} time={timer.time} name={timer.name} /> 
+        })}
+      </ul>
+    )
+  }
+  
+  render() {
       return (
     <div className="App">
       <h1>Timer</h1> 
         <TimerForm addTimer={this.addTimer} setTimer={this.setTimer} setName={this.setName} name={this.state.name}/>
-        {this.state.timerObj.map((id) => <TimerApp key={id} time={this.state.time} name={this.state.name} />  )}        
+        {this.renderTimers()}        
     </div>  
     );
   }
