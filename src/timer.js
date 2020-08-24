@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class TimerApp extends React.Component {
+class TimerApp extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -14,6 +14,7 @@ class TimerApp extends React.Component {
         this.resetTimer = this.resetTimer.bind(this);
         this.countDown = this.countDown.bind(this);        
         this.myInterval = null;
+        this.removeTimer = this.removeTimer.bind(this);
     }
     
     seconds(time){
@@ -46,11 +47,10 @@ class TimerApp extends React.Component {
     resetTimer() {        
         this.setState({time: this.state.reset})
     }
-    deletTimer = () => {
-        //this.props.                    <----------deleteTimer
-
+    removeTimer() {
+        this.props.deleteTimer(this.props.id);        
     }
-
+    
     render () {
         return (
     <div>        
@@ -58,7 +58,7 @@ class TimerApp extends React.Component {
         <button onClick = {this.startTimer}>START</button>
         <button onClick = {this.stopTimer}>STOP</button>
         <button onClick = {this.resetTimer}>RESET</button>
-        <button onClick= {this.deletTimer}>DELETE</button>        
+        <button onClick= {this.removeTimer}>DELETE</button>        
     </div>
         );  
 }}
