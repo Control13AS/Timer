@@ -7,7 +7,6 @@ class App extends Component {
   state = {
     time: 0,
     name: null,
-    id: uuidv4(),    
     timers: [],     
   }
   
@@ -25,9 +24,11 @@ class App extends Component {
   addTimer = (e) => {
     e.preventDefault();
     if (this.state.time === "" && this.state.name ===""){
-      console.log('error');
+      console.log('error ""');
+    } else if (this.state.time <= 0) {
+      console.log('err <=0');
     } else {
-      this.setState({       
+      this.setState({        
       timers: this.state.timers.concat({
         id: uuidv4(), 
         time: this.state.time, 
@@ -39,7 +40,29 @@ class App extends Component {
     }      
     document.getElementById('setTimer').value = "";
     document.getElementById('setName').value = "";    
-  }
+  } 
+
+  /*addTimer = (e) => {
+    e.preventDefault();
+    if (this.state.time === "" && this.state.name ===""){
+      console.log('error');
+    } else {
+
+      this.setState((prevState) => {
+          return {
+            timers: this.state.timers.concat({
+        id: uuidv4(), 
+        time: this.state.time, 
+        name: this.state.name,
+      }),
+      time: prevState.time,
+      name: prevState.name,             
+    }              
+    });
+    }      
+    //document.getElementById('setTimer').value = "";
+    //document.getElementById('setName').value = "";    
+  } */
 
   deleteTimer = (id) => {      
       this.setState({
@@ -51,7 +74,7 @@ class App extends Component {
   render() {
       return (
     <div className="App">
-      <h1>Timer</h1> 
+      <h1>Timer </h1> 
         <TimerForm addTimer={this.addTimer} setTimer={this.setTimer} setName={this.setName} name={this.state.name}/>
         <ul>
         {this.state.timers.map(timer => {

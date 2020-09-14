@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class TimerApp extends Component {
+class TimerApp extends  Component {
     constructor(props){
         super(props);
         this.state = {
@@ -29,8 +29,8 @@ class TimerApp extends Component {
     }
     }
     countDown() {
-    if (this.state.time === 0) {
-        clearInterval(this.myInterval);
+    if (this.state.time === 0) {        
+        this.stopTimer();
         alert('Time is over!')
     } else {
         this.setState((prevState) => {
@@ -44,10 +44,11 @@ class TimerApp extends Component {
     stopTimer() {
         clearInterval(this.myInterval);
     }
-    resetTimer() {        
+    resetTimer() {
+        this.stopTimer();
         this.setState({time: this.state.reset})
     }
-    removeTimer() {
+    removeTimer() {         
         this.props.deleteTimer(this.props.id);        
     }
     
