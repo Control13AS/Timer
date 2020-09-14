@@ -40,29 +40,7 @@ class App extends Component {
     }      
     document.getElementById('setTimer').value = "";
     document.getElementById('setName').value = "";    
-  } 
-
-  /*addTimer = (e) => {
-    e.preventDefault();
-    if (this.state.time === "" && this.state.name ===""){
-      console.log('error');
-    } else {
-
-      this.setState((prevState) => {
-          return {
-            timers: this.state.timers.concat({
-        id: uuidv4(), 
-        time: this.state.time, 
-        name: this.state.name,
-      }),
-      time: prevState.time,
-      name: prevState.name,             
-    }              
-    });
-    }      
-    //document.getElementById('setTimer').value = "";
-    //document.getElementById('setName').value = "";    
-  } */
+  }   
 
   deleteTimer = (id) => {      
       this.setState({
