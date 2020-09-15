@@ -42,12 +42,11 @@ class App extends Component {
     document.getElementById('setName').value = "";    
   }   
 
-  deleteTimer = (id) => {      
-      this.setState({
-        timers: this.state.timers.filter(i => i.id !== id)
-      });
-      console.log(this.state.timers);
-  } 
+  deleteTimer = (id) => {    
+      this.setState(prevState => ({
+  timers: prevState.timers.filter(i => i.id !== id)
+  }))
+  }
 
   render() {
       return (
