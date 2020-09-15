@@ -20,6 +20,7 @@ class App extends Component {
       name:e.target.value
     });
   }
+  
   addTimer = (e) => {
     e.preventDefault();
     if (this.state.time === "" && this.state.name ===""){
@@ -27,25 +28,26 @@ class App extends Component {
     } else if (this.state.time <= 0) {
       console.log('err <=0');
     } else {
-      this.setState({        
-      timers: this.state.timers.concat({
+      this.setState(prevState => ({        
+      timers: prevState.timers.concat({
         id: uuidv4(), 
         time: this.state.time, 
         name: this.state.name,
       }),
       time: "",
       name: "" ,              
-    });
+    }));
     }      
     document.getElementById('setTimer').value = "";
     document.getElementById('setName').value = "";    
-  }  
+  }
+      
   deleteTimer = (id) => {    
       this.setState(prevState => ({
   timers: prevState.timers.filter(i => i.id !== id)
   }))
   }
-  
+
   render() {
       return (
     <div className="App">
